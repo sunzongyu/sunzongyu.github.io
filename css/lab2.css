@@ -1,0 +1,264 @@
+/* 全局初始化：消除默认边距 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+}
+
+body {
+    font-family: "微软雅黑", sans-serif;
+    background-color: #f5f5f5;
+    padding-top: 70px; /* 为固定头部留出空间 */
+}
+
+/* 头部区域：固定定位+浮动导航 */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background-color: #2c3e50;
+    color: white;
+    padding: 0 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 999;
+}
+
+.logo {
+    float: left;
+    height: 70px;
+    line-height: 70px;
+}
+
+.logo img {
+    height: 50px;
+    vertical-align: middle;
+}
+
+.nav {
+    float: right;
+    height: 70px;
+    line-height: 70px;
+}
+
+.nav ul li {
+    float: left;
+    margin: 0 20px;
+}
+
+.nav ul li a {
+    color: white;
+    cursor: pointer; /* 鼠标悬停指针效果 */
+    transition: color 0.3s;
+}
+
+.nav ul li a:hover {
+    color: #3498db;
+}
+
+/* 主体容器：浮动三栏 */
+.container {
+    width: 1200px;
+    margin: 20px auto;
+    overflow: hidden; /* 清除浮动 */
+}
+
+/* 左侧栏：相对定位 */
+.left-sidebar {
+    float: left;
+    width: 200px;
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    position: relative; /* 相对定位 */
+    top: 0;
+}
+
+.left-sidebar h3 {
+    margin-bottom: 15px;
+    color: #2c3e50;
+}
+
+.left-sidebar ul li {
+    margin: 10px 0;
+}
+
+.left-sidebar ul li a {
+    color: #333;
+    cursor: pointer;
+    display: block;
+    padding: 5px;
+    transition: background-color 0.3s;
+}
+
+.left-sidebar ul li a:hover {
+    background-color: #f0f0f0;
+    color: #3498db;
+}
+
+/* 中间栏 */
+.main-content {
+    float: left;
+    width: 750px;
+    margin: 0 20px;
+}
+
+/* 图书展示区 */
+.book-showcase {
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.book-item {
+    float: left;
+    width: 200px;
+    margin: 0 15px;
+    position: relative; /* 父元素相对定位，为子绝做准备 */
+    border: 1px solid #eee;
+    border-radius: 5px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* 第一排第一列：父相子绝+悬停效果 */
+.first-item .book-info {
+    position: absolute; /* 子元素绝对定位 */
+    bottom: -40px; /* 默认隐藏 */
+    left: 0;
+    width: 100%;
+    height: 40px;
+    background-color: rgba(0,0,0,0.7);
+    color: white;
+    text-align: center;
+    line-height: 40px;
+    transition: bottom 0.3s;
+}
+
+.first-item:hover .book-info {
+    bottom: 0; /* 悬停显示 */
+}
+
+.book-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.book-item img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+}
+
+/* 热门推荐：浮动排列 */
+.hot-recommend {
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.hot-recommend h3 {
+    margin-bottom: 15px;
+    color: #2c3e50;
+}
+
+.hot-list .hot-item {
+    float: left;
+    width: 150px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    background-color: #ecf0f1;
+    margin: 0 10px 10px 0;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.hot-list .hot-item:hover {
+    background-color: #3498db;
+    color: white;
+}
+
+/* 新书上市：Table布局 */
+.new-books {
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #eee;
+    border-radius: 5px;
+}
+
+.new-books h3 {
+    margin-bottom: 15px;
+    color: #2c3e50;
+}
+
+.new-books table {
+    width: 100%;
+    text-align: center;
+}
+
+.new-books table th {
+    background-color: #2c3e50;
+    color: white;
+}
+
+.new-books table tr:hover {
+    background-color: #f5f5f5;
+    cursor: pointer;
+}
+
+/* 右侧栏：固定定位 */
+.right-sidebar {
+    float: left;
+    width: 200px;
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    position: fixed; /* 固定定位 */
+    top: 90px;
+    right: calc((100% - 1200px) / 2); /* 居中适配 */
+}
+
+.right-sidebar h3 {
+    margin-bottom: 15px;
+    color: #2c3e50;
+}
+
+.right-sidebar p {
+    margin: 10px 0;
+    padding: 8px;
+    background-color: #fff3cd;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.hot-item img {
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+    margin-right: 8px;
+    border-radius: 3px;
+}
+
+/* 页脚 */
+.footer {
+    clear: both;
+    text-align: center;
+    padding: 20px;
+    background-color: #2c3e50;
+    color: white;
+    margin-top: 30px;
+}
